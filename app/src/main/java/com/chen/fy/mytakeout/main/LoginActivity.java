@@ -33,7 +33,6 @@ public class LoginActivity extends AppCompatActivity{
 
         userId_et = findViewById(R.id.id_login);
         password_et = findViewById(R.id.password_login);
-        System.out.println("Sss");
         //设置过滤器，不能输入空格
         LoginRegisterUtils.setEditTextInhibitInputSpace(userId_et);
         LoginRegisterUtils.setEditTextInhibitInputSpace(password_et);
