@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!--搜索框-->
+    <TextView
+        android:id="@+id/search_tv_home"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/text_frame"
+        android:hint="请输入商家名"
+        android:gravity="center"/>
+
+
+    <!--空白view,隔开一段距离,有助于界面好看-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!--商家排序按钮组-->
+    <RadioGroup
+        android:id="@+id/home_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+
+        <RadioButton
+            android:id="@+id/default_home_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="综合"
+            android:textColor="@drawable/home_store_text_color" />
+
+        <RadioButton
+            android:id="@+id/sales_home_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="销量"
+            android:textColor="@drawable/home_store_text_color" />
+
+        <RadioButton
+            android:id="@+id/distance_home_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="距离"
+            android:textColor="@drawable/home_store_text_color" />
+
+        <RadioButton
+            android:id="@+id/average_home_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="人均"
+            android:textColor="@drawable/home_store_text_color" />
+
+    </RadioGroup>
+
+    <!--空白view,隔开一段距离,有助于界面好看-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50" />
+
+</LinearLayout>

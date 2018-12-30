@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.chen.fy.mytakeout">
+
+    <application
+        android:name=".application.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".main.MainActivity"
+            android:theme="@style/TakeOutTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".main.StoreActivity"
+            android:theme="@style/TakeOutTheme"/>
+        <activity android:name=".main.SearchStoreActivity"
+            android:theme="@style/TakeOutTheme"/>
+        <activity android:name=".main.SearchMenuActivity"
+            android:theme="@style/TakeOutTheme"/>
+        <activity android:name=".main.LoginActivity"
+            android:theme="@style/TakeOutTheme"/>
+        <activity android:name=".main.RegisterActivity"
+            android:theme="@style/TakeOutTheme"/>
+        <activity android:name=".main.MyInfoActivity"
+            android:theme="@style/TakeOutTheme"/>
+        <activity android:name=".main.ModifyNameActivity"
+            android:theme="@style/TakeOutTheme"/>
+        <activity android:name=".main.ModifyPhoneActivity"
+            android:theme="@style/TakeOutTheme"/>
+        <activity android:name=".main.EvaluationActivity"
+            android:theme="@style/TakeOutTheme"/>
+        <activity android:name=".main.ShoppingCarActivity"
+            android:theme="@style/TakeOutTheme"/>
+    </application>
+
+</manifest>

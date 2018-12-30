@@ -1,0 +1,35 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorSecondary">#aaa</item>
+    </style>
+
+    <!--自定义风格,状态栏透明-->
+    <style name="TakeOutTheme" parent="AppTheme"></style>
+
+    <!--ToolBar配置-->
+    <style name="Toolbar.MyStyle" parent="Base.Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <!--星级评分条-->
+    <style name="MyRatingBar" parent="@android:style/Widget.RatingBar">
+        <!--默认图片-->
+        <item name="android:progressDrawable">@drawable/ratingbar_full</item>
+        <!--&lt;!&ndash;默认大小&ndash;&gt;-->
+        <item name="android:maxHeight">47dip</item>
+        <item name="android:minHeight">47dip</item>
+    </style>
+
+
+</resources>

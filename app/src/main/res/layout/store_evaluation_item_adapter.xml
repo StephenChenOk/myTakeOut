@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!--用户头像(圆形)-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/headIcon_evaluation"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/shaokao_1" />
+
+        <!--用户名-->
+        <TextView
+            android:id="@+id/user_evaluation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="陈一生"
+            android:textColor="#444"
+            android:textSize="17dp" />
+
+        <!--日期-->
+        <TextView
+            android:id="@+id/date_evaluation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="2018.11.17"
+            android:textSize="10dp" />
+
+    </LinearLayout>
+
+    <!--评分-->
+    <TextView
+        android:id="@+id/grade_evaluation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="评分"
+        android:textColor="@color/my_hint"
+        android:textSize="12dp" />
+
+    <!--评论-->
+    <TextView
+        android:id="@+id/text_evaluation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="5dp"
+        android:text="好吃!不错"
+        android:textSize="14dp" />
+
+    <!--所点的菜单-->
+    <TextView
+        android:id="@+id/menu_store_evaluation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="5dp"
+        android:text="菜单"
+        android:textSize="12dp"
+        android:padding="2dp"
+        android:background="@drawable/text_frame"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:background="#ccc" />
+
+</LinearLayout>

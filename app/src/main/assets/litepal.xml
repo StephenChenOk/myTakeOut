@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<litepal>
+
+    <!--数据库名-->
+    <dbname value="MyTakeOut"/>
+    <!--版本号-->
+    <version value="21"/>
+
+    <!--用于指定所有映射集合-->
+    <list>
+        <mapping class="com.chen.fy.mytakeout.entity.StoreInfo"/>
+        <mapping class="com.chen.fy.mytakeout.entity.MenuInfo"/>
+        <mapping class="com.chen.fy.mytakeout.entity.EvaluationInfo"/>
+        <mapping class="com.chen.fy.mytakeout.entity.UserInfo" />
+        <mapping class="com.chen.fy.mytakeout.entity.OrderInfo"/>
+        <mapping class="com.chen.fy.mytakeout.entity.ShoppingCarInfo"/>
+    </list>
+
+</litepal>
