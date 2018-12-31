@@ -1,5 +1,6 @@
 package com.chen.fy.mytakeout.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chen.fy.mytakeout.R;
 import com.chen.fy.mytakeout.entity.ShoppingCarInfo;
 import com.chen.fy.mytakeout.fragment.StoreMenuFragment;
@@ -16,6 +18,7 @@ import java.util.List;
 
 public class ShoppingCarAdapter extends RecyclerView.Adapter<ShoppingCarAdapter.ViewHolder>{
 
+    private Context myContext;
     private List<ShoppingCarInfo> list;
     //构造方法,并传入数据源
     public ShoppingCarAdapter(List<ShoppingCarInfo> list){
@@ -27,6 +30,9 @@ public class ShoppingCarAdapter extends RecyclerView.Adapter<ShoppingCarAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        if(myContext==null){
+            myContext = viewGroup.getContext();
+        }
         //反射每行的子布局,并把view传入viewHolder中,以便获取控件对象
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.shopping_car_adapter, viewGroup, false);
@@ -37,7 +43,8 @@ public class ShoppingCarAdapter extends RecyclerView.Adapter<ShoppingCarAdapter.
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         ShoppingCarInfo shoppingCarInfo = list.get(i);
         viewHolder.shopping_car_store_name.setText(shoppingCarInfo.getStoreName());
-        viewHolder.shopping_car_menu_logo.setImageResource(StoreMenuFragment.getMenuLogoId(shoppingCarInfo.getMenuLogo()));
+       // viewHolder.shopping_car_menu_logo.setImageResource(StoreMenuFragment.getMenuLogoId(shoppingCarInfo.getMenuLogo()));
+        Glide.with(myContext).load(StoreMenuFragment.getMenuLogoId(shoppingCarInfo.getMenuLogo())).into(viewHolder.shopping_car_menu_logo);
         viewHolder.shopping_car_menu_name.setText(shoppingCarInfo.getMenuName());
         viewHolder.shopping_car_menu_price.setText(String.valueOf(shoppingCarInfo.getPrice()));
         viewHolder.shopping_car_menu_number.setText("1");

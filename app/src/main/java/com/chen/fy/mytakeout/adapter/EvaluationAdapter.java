@@ -5,6 +5,7 @@ package com.chen.fy.mytakeout.adapter;
  */
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chen.fy.mytakeout.R;
 import com.chen.fy.mytakeout.entity.EvaluationInfo;
 import com.chen.fy.mytakeout.fragment.StoreEvaluationFragment;
@@ -27,6 +29,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class EvaluationAdapter extends RecyclerView.Adapter<EvaluationAdapter.ViewHolder> {
 
     private List<EvaluationInfo> list;
+    private Context myContext;
     //private Bitmap headIcon;
     //构造方法,并传入数据源
     public EvaluationAdapter(List<EvaluationInfo> list){
@@ -36,6 +39,9 @@ public class EvaluationAdapter extends RecyclerView.Adapter<EvaluationAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        if(myContext == null){
+            myContext = viewGroup.getContext();
+        }
         //反射每行的子布局,并把view传入viewHolder中,以便获取控件对象
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.store_evaluation_item_adapter, viewGroup, false);
@@ -46,9 +52,11 @@ public class EvaluationAdapter extends RecyclerView.Adapter<EvaluationAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, @SuppressLint("RecyclerView") final int i) {
         EvaluationInfo evaluationInfo = list.get(i);
         if(StoreEvaluationFragment.getUserHeadIcon(evaluationInfo.getUserName())!= 0 ) {
-            viewHolder.headIcon.setImageResource(StoreEvaluationFragment.getUserHeadIcon(evaluationInfo.getUserName()));
+           // viewHolder.headIcon.setImageResource(StoreEvaluationFragment.getUserHeadIcon(evaluationInfo.getUserName()));
+            Glide.with(myContext).load(StoreEvaluationFragment.getUserHeadIcon(evaluationInfo.getUserName())).into(viewHolder.headIcon);
         }else{
-            viewHolder.headIcon.setImageBitmap(ImageUtils.getHeadIcon(evaluationInfo.getUserId()));
+            //viewHolder.headIcon.setImageBitmap(ImageUtils.getHeadIcon(evaluationInfo.getUserId()));
+            Glide.with(myContext).load(ImageUtils.getHeadIcon(evaluationInfo.getUserId())).into(viewHolder.headIcon);
         }
 
         viewHolder.user.setText(evaluationInfo.getUserName());

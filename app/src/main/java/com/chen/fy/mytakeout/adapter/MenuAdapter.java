@@ -5,6 +5,7 @@ package com.chen.fy.mytakeout.adapter;
  */
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.chen.fy.mytakeout.R;
 import com.chen.fy.mytakeout.application.MyApplication;
 import com.chen.fy.mytakeout.entity.MenuInfo;
@@ -29,6 +31,7 @@ import q.rorbin.badgeview.QBadgeView;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
+    private Context myContext;
     private List<MenuInfo> list;
     private ItemClickLister itemClickLister;
 
@@ -57,6 +60,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        if(myContext==null){
+            myContext = viewGroup.getContext();
+        }
         //反射每行的子布局,并把view传入viewHolder中,以便获取控件对象
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.store_menu_item_adapter, viewGroup, false);
@@ -67,7 +73,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, @SuppressLint("RecyclerView") final int i) {
         //对子项的数据进行赋值
         final MenuInfo menuInfo = list.get(i);    //获取当前行对象
-        viewHolder.logo.setImageResource(StoreMenuFragment.getMenuLogoId(menuInfo.getLogo()));
+        //viewHolder.logo.setImageResource(StoreMenuFragment.getMenuLogoId(menuInfo.getLogo()));
+        Glide.with(myContext).load(StoreMenuFragment.getMenuLogoId(menuInfo.getLogo())).into(viewHolder.logo);
         viewHolder.name.setText(menuInfo.getName());
         viewHolder.sales.setText(String.format("月售%s", String.valueOf(menuInfo.getSales())));
         viewHolder.zan.setText(String.format("赞%s", String.valueOf(menuInfo.getZan())));

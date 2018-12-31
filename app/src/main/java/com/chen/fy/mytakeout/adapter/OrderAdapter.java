@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chen.fy.mytakeout.R;
 import com.chen.fy.mytakeout.entity.OrderInfo;
 import com.chen.fy.mytakeout.fragment.OrderFragment;
@@ -22,6 +23,7 @@ import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
 
+    private Context myContext;
     private List<OrderInfo> list;
     private Context context;
     private boolean test = true;
@@ -34,6 +36,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        if (myContext == null) {
+            myContext = viewGroup.getContext();
+        }
         //反射每行的子布局,并把view传入viewHolder中,以便获取控件对象
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.order_item_adapter, viewGroup, false);
@@ -44,11 +49,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         final OrderInfo orderInfo = list.get(i);
-        viewHolder.logo.setImageResource(OrderFragment.getStoreLogoId(orderInfo.getStoreName()));
+        //viewHolder.logo.setImageResource(OrderFragment.getStoreLogoId(orderInfo.getStoreName()));
+        Glide.with(myContext).load(OrderFragment.getStoreLogoId(orderInfo.getStoreName())).into(viewHolder.logo);
         viewHolder.storeName.setText(orderInfo.getStoreName());
-        if(orderInfo.isOrderType()) {  //已经完成配送
+        if (orderInfo.isOrderType()) {  //已经完成配送
             viewHolder.orderType.setText("订单已完成");
-        }else{
+        } else {
             viewHolder.orderType.setText("正在配送中");
         }
         viewHolder.menuName.setText(orderInfo.getMenuName());
@@ -65,12 +71,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                     Intent intent = new Intent(context, EvaluationActivity.class);
                     intent.putExtra("storeName", orderInfo.getStoreName());  //店家名
                     intent.putExtra("menuName", orderInfo.getMenuName());
-                    intent.putExtra("orderId",orderInfo.getId());
+                    intent.putExtra("orderId", orderInfo.getId());
                     context.startActivity(intent);
                 }
             });
         }
-        test=!test;
+        test = !test;
     }
 
     @Override

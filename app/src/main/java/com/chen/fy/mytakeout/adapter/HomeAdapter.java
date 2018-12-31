@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chen.fy.mytakeout.R;
 import com.chen.fy.mytakeout.entity.StoreInfo;
 import com.chen.fy.mytakeout.fragment.HomeFragment;
@@ -48,7 +49,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, @SuppressLint("RecyclerView") final int i) {
         //对子项的数据进行赋值
         StoreInfo storeInfo = list.get(i);   //获取每一行的实例
-        viewHolder.logo.setImageResource(HomeFragment.getStoreLogoId(storeInfo.getLogo()));
+        //viewHolder.logo.setImageResource(HomeFragment.getStoreLogoId(storeInfo.getLogo()));
+        Glide.with(myContext).load(HomeFragment.getStoreLogoId(storeInfo.getLogo())).into(viewHolder.logo);
         viewHolder.name.setText(storeInfo.getName());
         viewHolder.grade.setText(String.format("评价:%s", String.valueOf(storeInfo.getGrade())));
         viewHolder.sales.setText(String.format("月售%s", String.valueOf(storeInfo.getSales())));
